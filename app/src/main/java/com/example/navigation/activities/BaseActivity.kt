@@ -1,4 +1,4 @@
-package com.example.navigation
+package com.example.navigation.activities
 
 import androidx.appcompat.app.AppCompatActivity
 

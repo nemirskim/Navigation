@@ -1,4 +1,4 @@
-package com.example.navigation
+package com.example.navigation.activities
 
 import android.content.Intent
 import android.os.Bundle
