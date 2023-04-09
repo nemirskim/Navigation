@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Navigation</string>
+    <string name="where_is_a_coin">where is a coin?</string>
+    <string name="options">Options</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
 </resources>
