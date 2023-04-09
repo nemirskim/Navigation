@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Navigation"
         tools:targetApi="31">
         <activity
-            android:name=".MenuActivity"
+            android:name=".activities.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".activities.AboutActivity"
             android:exported="false"
             android:label="@string/about"
-            android:parentActivityName=".MenuActivity" />
+            android:parentActivityName=".activities.MenuActivity" />
     </application>
 
 </manifest>
