@@ -17,5 +17,9 @@ class OptionsActivity : BaseActivity() {
             mutableListOf(2, 3, 4, 5, 6)
         )
         binding.fistCountSpinner.adapter = adapter
+
+        binding.okButton.setOnClickListener { onOkPressed() }
     }
+
+    private fun onOkPressed() = finish()
 }
