@@ -12,8 +12,14 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        binding.optionsButton.setOnClickListener { onOptionsPressed() }
         binding.aboutButton.setOnClickListener { onAboutPressed() }
         binding.exitButton.setOnClickListener { onExitPressed() }
+    }
+
+    private fun onOptionsPressed() {
+        val intent = Intent(this, OptionsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun onAboutPressed() {
