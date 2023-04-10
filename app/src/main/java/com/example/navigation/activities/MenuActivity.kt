@@ -8,6 +8,11 @@ import com.example.navigation.databinding.ActivityMenuBinding
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
 
+    private val optionsLauncher =
+        registerForActivityResult(OptionsActivity.Contract()) {
+            binding.fistsCountTextView.text = it.fistCount.toString()
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater).also { setContentView(it.root) }
@@ -18,8 +23,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun onOptionsPressed() {
-        val intent = Intent(this, OptionsActivity::class.java)
-        startActivity(intent)
+        optionsLauncher.launch(binding.fistsCountTextView.text.toString().toInt())
     }
 
     private fun onAboutPressed() {

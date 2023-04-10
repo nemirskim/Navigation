@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activities.MenuActivity">
 
+    <TextView
+        android:id="@+id/fistsCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@+id/topGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/startGuideline"
         android:layout_width="wrap_content"
@@ -59,9 +69,9 @@
             android:text="@string/about" />
 
         <Button
-            android:layout_marginTop="40dp"
             android:id="@+id/exitButton"
             style="@style/buttonStyle"
+            android:layout_marginTop="40dp"
             android:text="@string/exit" />
 
     </LinearLayout>
