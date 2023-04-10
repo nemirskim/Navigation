@@ -7,4 +7,6 @@
     <string name="application_name">Application name: %1$s</string>
     <string name="version_number">Version number: %1$s</string>
     <string name="ok">OK</string>
+    <string name="choose_number_of_fists_for_your_game">Choose number of fists for your game</string>
+    <string name="enable_timer">Enable timer</string>
 </resources>
