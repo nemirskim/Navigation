@@ -10,4 +10,5 @@
     <string name="back">Back</string>
     <string name="choose_number_of_fists_for_your_game">Choose number of fists for your game</string>
     <string name="enable_timer">Enable timer</string>
+    <string name="fists_count">Fists count: %1$s</string>
 </resources>

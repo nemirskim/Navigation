@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.example.navigation.BuildConfig
 import com.example.navigation.R
 import com.example.navigation.databinding.ActivityAboutBinding
+import com.example.navigation.models.Options
 
 class AboutActivity : BaseActivity() {
     private lateinit var binding: ActivityAboutBinding
@@ -17,9 +18,13 @@ class AboutActivity : BaseActivity() {
         binding.okButton.setOnClickListener { onOkPressed() }
     }
 
-    private fun setupUi() {
-        binding.applicationNameTextView.text = getString(R.string.application_name, "Where is my coin?")
-        binding.versionNameTextView.text = getString(R.string.version_number, BuildConfig.VERSION_NAME)
+    private fun setupUi() = with(binding) {
+        applicationNameTextView.text = getString(R.string.application_name, "Where is my coin?")
+        versionNameTextView.text = getString(R.string.version_number, BuildConfig.VERSION_NAME)
+        fistCountTextView.text = resources.getString(
+            R.string.fists_count,
+            intent.getIntExtra("fists count", Options.DEFAULT.fistCount).toString()
+        )
     }
 
     private fun onOkPressed() = finish()
