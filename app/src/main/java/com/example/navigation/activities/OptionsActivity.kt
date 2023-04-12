@@ -2,6 +2,7 @@ package com.example.navigation.activities
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -18,7 +19,7 @@ class OptionsActivity : BaseActivity() {
 
     private val resultIntent: Intent
         get() = Intent().apply {
-            putExtra(EXTRA_OUTPUT_OPTIONS, binding.fistCountSpinner.selectedItem.toString().toInt())
+            putExtra(EXTRA_OUTPUT_OPTIONS, binding.fistsCountSpinner.selectedItem.toString().toInt())
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,13 +37,15 @@ class OptionsActivity : BaseActivity() {
             android.R.layout.simple_spinner_dropdown_item,
             spinnerValues
         )
-        fistCountSpinner.adapter = adapter
-        val spinnerPosition = spinnerValues.indexOfFirst {
-                it == intent.getIntExtra(EXTRA_INPUT_OPTIONS, Options.DEFAULT.fistCount)
-            }
-        fistCountSpinner.setSelection(spinnerPosition)
+        fistsCountSpinner.adapter = adapter
+        val fistsCount = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(EXTRA_INPUT_OPTIONS, Options::class.java)?.fistCount as Int
+        } else {
+            intent.getParcelableExtra<Options>(EXTRA_OUTPUT_OPTIONS)?.fistCount as Int
+        }
+        fistsCountSpinner.setSelection(spinnerValues.indexOfFirst { it == fistsCount })
 
-        fistCountSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        fistsCountSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -62,8 +65,8 @@ class OptionsActivity : BaseActivity() {
         finish()
     }
 
-    class Contract : ActivityResultContract<Int, Options>() {
-        override fun createIntent(context: Context, input: Int) =
+    class Contract : ActivityResultContract<Options, Options>() {
+        override fun createIntent(context: Context, input: Options) =
             Intent(context, OptionsActivity::class.java).apply {
                 putExtra(EXTRA_INPUT_OPTIONS, input)
             }
