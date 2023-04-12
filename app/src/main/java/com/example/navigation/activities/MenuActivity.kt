@@ -15,8 +15,8 @@ class MenuActivity : AppCompatActivity() {
 
     private val optionsLauncher =
         registerForActivityResult(OptionsActivity.Contract()) {
-            binding.fistsCountTextView.text = it.fistCount.toString()
             options = it
+            setupUi()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,18 @@ class MenuActivity : AppCompatActivity() {
         binding.optionsButton.setOnClickListener { onOptionsPressed() }
         binding.aboutButton.setOnClickListener { onAboutPressed() }
         binding.exitButton.setOnClickListener { onExitPressed() }
+
+        options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT
+        setupUi()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(KEY_OPTIONS, options)
+    }
+
+    private fun setupUi() {
+        binding.fistsCountTextView.text = options.fistCount.toString()
     }
 
     private fun onStartGamePressed() {
@@ -44,4 +56,8 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun onExitPressed() = finish()
+
+    companion object {
+        private const val KEY_OPTIONS = "OPTIONS"
+    }
 }
