@@ -1,6 +1,8 @@
-package com.example.navigation
+package com.example.navigation.activities
 
 import android.os.Bundle
+import com.example.navigation.BuildConfig
+import com.example.navigation.R
 import com.example.navigation.databinding.ActivityAboutBinding
 
 class AboutActivity : BaseActivity() {
