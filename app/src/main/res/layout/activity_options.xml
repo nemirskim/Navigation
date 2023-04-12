@@ -13,7 +13,7 @@
         android:gravity="center"
         android:lines="2"
         android:text="@string/choose_number_of_fists_for_your_game"
-        app:layout_constraintBottom_toTopOf="@+id/fistCountSpinner"
+        app:layout_constraintBottom_toTopOf="@+id/fistsCountSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintWidth_percent="0.34" />
 
     <Spinner
-        android:id="@+id/fistCountSpinner"
+        android:id="@+id/fistsCountSpinner"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:contentDescription="@string/choose_number_of_fists_for_your_game"
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/ok"
-        app:layout_constraintEnd_toEndOf="@+id/fistCountSpinner"
-        app:layout_constraintStart_toStartOf="@+id/fistCountSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/fistCountSpinner" />
+        app:layout_constraintEnd_toEndOf="@+id/fistsCountSpinner"
+        app:layout_constraintStart_toStartOf="@+id/fistsCountSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/fistsCountSpinner" />
 
     <CheckBox
         android:id="@+id/timerCheckBox"
@@ -47,9 +47,9 @@
         android:layout_height="wrap_content"
         android:text="@string/enable_timer"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/fistCountSpinner"
+        app:layout_constraintBottom_toBottomOf="@+id/fistsCountSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fistCountSpinner"
-        app:layout_constraintTop_toTopOf="@+id/fistCountSpinner" />
+        app:layout_constraintStart_toEndOf="@+id/fistsCountSpinner"
+        app:layout_constraintTop_toTopOf="@+id/fistsCountSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

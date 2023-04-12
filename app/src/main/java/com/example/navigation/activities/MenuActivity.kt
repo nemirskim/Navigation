@@ -34,7 +34,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun onOptionsPressed() {
-        optionsLauncher.launch(binding.fistsCountTextView.text.toString().toInt())
+        optionsLauncher.launch(options)
     }
 
     private fun onAboutPressed() {
