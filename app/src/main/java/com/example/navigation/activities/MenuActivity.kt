@@ -39,6 +39,7 @@ class MenuActivity : AppCompatActivity() {
 
     private fun onAboutPressed() {
         val intent = Intent(this, AboutActivity::class.java)
+        intent.putExtra("fists count", options.fistCount)
         startActivity(intent)
     }
 
