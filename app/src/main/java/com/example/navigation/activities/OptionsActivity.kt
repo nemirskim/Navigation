@@ -1,13 +1,11 @@
 package com.example.navigation.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.result.contract.ActivityResultContract
 import com.example.navigation.databinding.ActivityOptionsBinding
 import com.example.navigation.models.Options
 
@@ -41,7 +39,7 @@ class OptionsActivity : BaseActivity() {
         val fistsCount = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(EXTRA_INPUT_OPTIONS, Options::class.java)?.fistCount as Int
         } else {
-            intent.getParcelableExtra<Options>(EXTRA_OUTPUT_OPTIONS)?.fistCount as Int
+            intent.getParcelableExtra<Options>(EXTRA_INPUT_OPTIONS)?.fistCount as Int
         }
         fistsCountSpinner.setSelection(spinnerValues.indexOfFirst { it == fistsCount })
 
@@ -65,21 +63,8 @@ class OptionsActivity : BaseActivity() {
         finish()
     }
 
-    class Contract : ActivityResultContract<Options, Options>() {
-        override fun createIntent(context: Context, input: Options) =
-            Intent(context, OptionsActivity::class.java).apply {
-                putExtra(EXTRA_INPUT_OPTIONS, input)
-            }
-
-        override fun parseResult(resultCode: Int, intent: Intent?): Options {
-            val settings = intent?.getIntExtra(EXTRA_OUTPUT_OPTIONS, Options.DEFAULT.fistCount)
-                ?: Options.DEFAULT.fistCount
-            return Options(settings)
-        }
-    }
-
     companion object {
-        private const val EXTRA_INPUT_OPTIONS = "EXTRA_OPTIONS"
-        private const val EXTRA_OUTPUT_OPTIONS = "EXTRA_OPTIONS"
+        const val EXTRA_INPUT_OPTIONS = "EXTRA_OPTIONS"
+        const val EXTRA_OUTPUT_OPTIONS = "EXTRA_OPTIONS"
     }
 }
