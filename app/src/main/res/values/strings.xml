@@ -12,4 +12,7 @@
     <string name="enable_timer">Enable timer</string>
     <string name="fists_count">Fists count: %1$s</string>
     <string name="pick_a_fist_with_a_coin">Pick a fist with a coin!</string>
+    <string name="fist">Fist</string>
+    <string name="fist_1">Fist 1</string>
+    <string name="fist_number">Fist %1$s</string>
 </resources>
