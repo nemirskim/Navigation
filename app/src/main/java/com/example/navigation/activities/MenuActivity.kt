@@ -2,6 +2,7 @@ package com.example.navigation.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.navigation.Contract
 import com.example.navigation.databinding.ActivityMenuBinding
@@ -42,6 +43,11 @@ class MenuActivity : AppCompatActivity() {
 
         options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT
         setupUi()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Log", "MenuActivity's onDestroy() called")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

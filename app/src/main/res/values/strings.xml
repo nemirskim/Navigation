@@ -15,4 +15,6 @@
     <string name="fist">Fist</string>
     <string name="fist_1">Fist 1</string>
     <string name="fist_number">Fist %1$s</string>
+    <string name="you_won">You won!</string>
+    <string name="to_main_menu">To Main Menu</string>
 </resources>

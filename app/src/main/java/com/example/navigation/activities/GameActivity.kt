@@ -1,7 +1,9 @@
 package com.example.navigation.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.navigation.R
@@ -26,6 +28,11 @@ class GameActivity : BaseActivity() {
         }
 
         setupUi()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Log", "GameActivity's onDestroy() called")
     }
 
     private fun setupUi() {
@@ -58,7 +65,8 @@ class GameActivity : BaseActivity() {
 
     private fun onFistSelected(view: View) {
         if (view.tag == winningFist) {
-            Toast.makeText(this, "Yes!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, WinActivity::class.java)
+            startActivity(intent)
         } else {
             Toast.makeText(this, "No!", Toast.LENGTH_SHORT).show()
         }
