@@ -36,8 +36,6 @@ class GameActivity : BaseActivity() {
     }
 
     private fun setupUi() {
-        binding.countTextView.text = options.fistCount.toString()
-
         getWinningFist()
         createFists()
     }

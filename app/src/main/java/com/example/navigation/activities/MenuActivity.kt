@@ -27,9 +27,7 @@ class MenuActivity : AppCompatActivity() {
                 OptionsActivity.EXTRA_INPUT_OPTIONS, OptionsActivity.EXTRA_OUTPUT_OPTIONS
             )
         ) {
-            binding.fistsCountTextView.text = it.fistCount.toString()
             options = it
-            setupUi()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +40,6 @@ class MenuActivity : AppCompatActivity() {
         binding.exitButton.setOnClickListener { onExitPressed() }
 
         options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT
-        setupUi()
     }
 
     override fun onDestroy() {
@@ -53,10 +50,6 @@ class MenuActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable(KEY_OPTIONS, options)
-    }
-
-    private fun setupUi() {
-        binding.fistsCountTextView.text = options.fistCount.toString()
     }
 
     private fun onStartGamePressed() {
