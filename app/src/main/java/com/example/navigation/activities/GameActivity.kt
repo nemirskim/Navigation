@@ -8,11 +8,12 @@ import com.example.navigation.R
 import com.example.navigation.databinding.ActivityGameBinding
 import com.example.navigation.databinding.ItemFistBinding
 import com.example.navigation.models.Options
+import kotlin.properties.Delegates
 
 class GameActivity : BaseActivity() {
     private lateinit var binding: ActivityGameBinding
     private lateinit var options: Options
-//    private var fistIndex by Delegates.notNull<Int>()
+    private var winningFist by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,23 +24,27 @@ class GameActivity : BaseActivity() {
         } else {
             intent.getParcelableExtra(EXTRA_OUTPUT_OPTIONS) ?: Options.DEFAULT
         }
-        
+
         setupUi()
     }
-    
+
     private fun setupUi() {
         binding.countTextView.text = options.fistCount.toString()
 
+        getWinningFist()
         createFists()
     }
-    
+
     private fun createFists() {
         val fistBindings = (0 until options.fistCount).map { index ->
             val fistBinding = ItemFistBinding.inflate(layoutInflater)
-            fistBinding.root.id = View.generateViewId()
-            fistBinding.fistTitleTextView.text = resources.getString(R.string.fist_number, (index + 1).toString())
-            fistBinding.root.setOnClickListener { view -> onFistSelected(view) }
-            fistBinding.root.tag = index
+            with(fistBinding) {
+                root.id = View.generateViewId()
+                root.setOnClickListener { view -> onFistSelected(view) }
+                fistTitleTextView.text =
+                    resources.getString(R.string.fist_number, (index + 1).toString())
+                root.tag = index
+            }
             binding.root.addView(fistBinding.root)
             fistBinding
         }
@@ -47,8 +52,16 @@ class GameActivity : BaseActivity() {
         binding.flow.referencedIds = fistBindings.map { it.root.id }.toIntArray()
     }
 
+    private fun getWinningFist() {
+        winningFist = (0 until options.fistCount).random()
+    }
+
     private fun onFistSelected(view: View) {
-        Toast.makeText(this, "Yes!", Toast.LENGTH_SHORT).show()
+        if (view.tag == winningFist) {
+            Toast.makeText(this, "Yes!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {
