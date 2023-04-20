@@ -27,7 +27,7 @@ class GameActivity : BaseActivity() {
             intent.getParcelableExtra(EXTRA_OUTPUT_OPTIONS) ?: Options.DEFAULT
         }
 
-        setupUi()
+        setupUi(savedInstanceState)
     }
 
     override fun onDestroy() {
@@ -35,8 +35,13 @@ class GameActivity : BaseActivity() {
         Log.d("Log", "GameActivity's onDestroy() called")
     }
 
-    private fun setupUi() {
-        getWinningFist()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(WINNING_FIST, winningFist)
+    }
+
+    private fun setupUi(savedInstanceState: Bundle?) {
+        getWinningFist(savedInstanceState)
         createFists()
     }
 
@@ -57,8 +62,9 @@ class GameActivity : BaseActivity() {
         binding.flow.referencedIds = fistBindings.map { it.root.id }.toIntArray()
     }
 
-    private fun getWinningFist() {
-        winningFist = (0 until options.fistCount).random()
+    private fun getWinningFist(savedInstanceState: Bundle?) {
+        winningFist =
+            savedInstanceState?.getInt(WINNING_FIST) ?: (0 until options.fistCount).random()
     }
 
     private fun onFistSelected(view: View) {
@@ -73,5 +79,6 @@ class GameActivity : BaseActivity() {
     companion object {
         const val EXTRA_INPUT_OPTIONS = "EXTRA_OPTIONS"
         const val EXTRA_OUTPUT_OPTIONS = "EXTRA_OPTIONS"
+        const val WINNING_FIST = "WINNING_FIST"
     }
 }
