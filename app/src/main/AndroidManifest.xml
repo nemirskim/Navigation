@@ -34,6 +34,9 @@
             android:exported="false"
             android:label="@string/about"
             android:parentActivityName=".activities.MenuActivity" />
+        <activity
+            android:name=".activities.WinActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

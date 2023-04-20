@@ -2,7 +2,9 @@ package com.example.navigation.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.navigation.Contract
 import com.example.navigation.databinding.ActivityMenuBinding
 import com.example.navigation.models.Options
 
@@ -11,12 +13,21 @@ class MenuActivity : AppCompatActivity() {
     private var options: Options = Options.DEFAULT
 
     private val gameLauncher =
-        registerForActivityResult(GameActivity.Contract()) {}
+        registerForActivityResult(
+            Contract(
+                GameActivity::class.java,
+                GameActivity.EXTRA_INPUT_OPTIONS, GameActivity.EXTRA_OUTPUT_OPTIONS
+            )
+        ) {}
 
     private val optionsLauncher =
-        registerForActivityResult(OptionsActivity.Contract()) {
+        registerForActivityResult(
+            Contract(
+                OptionsActivity::class.java,
+                OptionsActivity.EXTRA_INPUT_OPTIONS, OptionsActivity.EXTRA_OUTPUT_OPTIONS
+            )
+        ) {
             options = it
-            setupUi()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,16 +40,16 @@ class MenuActivity : AppCompatActivity() {
         binding.exitButton.setOnClickListener { onExitPressed() }
 
         options = savedInstanceState?.getParcelable(KEY_OPTIONS) ?: Options.DEFAULT
-        setupUi()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Log", "MenuActivity's onDestroy() called")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable(KEY_OPTIONS, options)
-    }
-
-    private fun setupUi() {
-        binding.fistsCountTextView.text = options.fistCount.toString()
     }
 
     private fun onStartGamePressed() {
