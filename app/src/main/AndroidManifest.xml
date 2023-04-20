@@ -23,7 +23,12 @@
         <activity
             android:name=".activities.GameActivity"
             android:exported="false"
-            android:parentActivityName=".activities.MenuActivity" />
+            android:parentActivityName=".activities.MenuActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".activities.WinActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".activities.OptionsActivity"
             android:exported="false"
@@ -34,9 +39,6 @@
             android:exported="false"
             android:label="@string/about"
             android:parentActivityName=".activities.MenuActivity" />
-        <activity
-            android:name=".activities.WinActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
