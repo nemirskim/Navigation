@@ -8,18 +8,22 @@
     tools:context=".fragments.MenuFragment">
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startGameButton"
         style="@style/appCompatButtonStyle"
         android:text="@string/where_is_a_coin" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/optionsButton"
         style="@style/appCompatButtonStyle"
         android:text="@string/options" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/aboutButton"
         style="@style/appCompatButtonStyle"
         android:text="@string/about" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/exitButton"
         style="@style/appCompatButtonStyle"
         android:text="@string/exit" />
 
