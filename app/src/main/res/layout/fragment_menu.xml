@@ -8,28 +8,19 @@
     tools:context=".fragments.MenuFragment">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:text="@string/where_is_a_coin"
-        android:textColor="@color/black" />
+        style="@style/appCompatButtonStyle"
+        android:text="@string/where_is_a_coin" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:text="@string/options"
-        android:textColor="@color/black" />
+        style="@style/appCompatButtonStyle"
+        android:text="@string/options" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/about"
-        android:textColor="@color/black" />
+        style="@style/appCompatButtonStyle"
+        android:text="@string/about" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="155dp"
-        android:layout_height="wrap_content"
-        android:text="@string/exit"
-        android:textColor="@color/black" />
+        style="@style/appCompatButtonStyle"
+        android:text="@string/exit" />
 
 </LinearLayout>
