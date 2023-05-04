@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.navigation.BuildConfig
 import com.example.navigation.R
-import com.example.navigation.databinding.FragmentMenuBinding
+import com.example.navigation.databinding.FragmentAboutBinding
 
-class MenuFragment : Fragment(R.layout.fragment_menu) {
-    private var _binding: FragmentMenuBinding? = null
+class AboutFragment : Fragment(R.layout.fragment_about) {
+    private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,27 +20,33 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.aboutButton.setOnClickListener {
-            val action = MenuFragmentDirections.actionMenuFragmentToAboutFragment()
+        setupUi()
+
+        binding.okButton.setOnClickListener {
+            val action = AboutFragmentDirections.actionAboutFragmentToMenuFragment()
             findNavController().navigate(action)
         }
     }
 
+    private fun setupUi() {
+        binding.applicationNameTextView.text = getString(R.string.application_name, "Where is my coin?")
+        binding.versionNameTextView.text = getString(R.string.version_number, BuildConfig.VERSION_NAME)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
-        Log.d("Logs", "MenuFragment onDestroyView() is called")
+        Log.d("Logs", "AboutFragment onDestroyView() is called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("Logs", "MenuFragment onDestroy() is called")
+        Log.d("Logs", "AboutFragment onDestroy() is called")
     }
 }
