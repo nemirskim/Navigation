@@ -1,17 +1,15 @@
 package com.example.navigation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.navigation.BuildConfig
 import com.example.navigation.R
 import com.example.navigation.databinding.FragmentAboutBinding
 
-class AboutFragment : Fragment(R.layout.fragment_about) {
+class AboutFragment : BaseFragment("AboutFragment", R.layout.fragment_about) {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
@@ -20,6 +18,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,15 +37,5 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
     private fun setupUi() {
         binding.applicationNameTextView.text = getString(R.string.application_name, "Where is my coin?")
         binding.versionNameTextView.text = getString(R.string.version_number, BuildConfig.VERSION_NAME)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("Logs", "AboutFragment onDestroyView() is called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("Logs", "AboutFragment onDestroy() is called")
     }
 }
