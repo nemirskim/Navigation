@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.OptionsFragment">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        android:text="@string/choose_number_of_fists_for_your_game"
+        app:layout_constraintBottom_toTopOf="@+id/fistsCountSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.34" />
+
+    <Spinner
+        android:id="@+id/fistsCountSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:contentDescription="@string/choose_number_of_fists_for_your_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <Button
+        android:id="@+id/okButton"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/ok"
+        app:layout_constraintEnd_toEndOf="@+id/fistsCountSpinner"
+        app:layout_constraintStart_toStartOf="@+id/fistsCountSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/fistsCountSpinner" />
+
+    <CheckBox
+        android:id="@+id/timerCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enable_timer"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fistsCountSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fistsCountSpinner"
+        app:layout_constraintTop_toTopOf="@+id/fistsCountSpinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,14 +7,24 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.navigation.fragments.MenuFragment"
+        android:label="Menu"
         tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_menuFragment_to_aboutFragment"
             app:destination="@id/aboutFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_right"
             app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.example.navigation.fragments.OptionsFragment"
+        android:label="Options"
+        tools:layout="@layout/fragment_options" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.navigation.fragments.AboutFragment"

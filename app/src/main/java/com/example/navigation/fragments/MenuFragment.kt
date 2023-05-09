@@ -25,6 +25,11 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.optionsButton.setOnClickListener {
+            val action = MenuFragmentDirections.actionMenuFragmentToOptionsFragment()
+            findNavController().navigate(action)
+        }
+
         binding.aboutButton.setOnClickListener {
             val action = MenuFragmentDirections.actionMenuFragmentToAboutFragment()
             findNavController().navigate(action)
