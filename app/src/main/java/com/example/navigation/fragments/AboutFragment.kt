@@ -33,6 +33,11 @@ class AboutFragment : BaseFragment("AboutFragment", R.layout.fragment_about) {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setupUi() {
         binding.applicationNameTextView.text = getString(R.string.application_name, "Where is my coin?")
         binding.versionNameTextView.text = getString(R.string.version_number, BuildConfig.VERSION_NAME)

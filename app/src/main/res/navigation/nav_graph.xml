@@ -19,7 +19,15 @@
             app:destination="@id/aboutFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_menuFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.navigation.fragments.GameFragment"
+        android:label="Where is my coin?"
+        tools:layout="@layout/fragment_game" />
     <fragment
         android:id="@+id/optionsFragment"
         android:name="com.example.navigation.fragments.OptionsFragment"
