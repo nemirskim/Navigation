@@ -34,5 +34,9 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
             val action = MenuFragmentDirections.actionMenuFragmentToAboutFragment()
             findNavController().navigate(action)
         }
+
+        binding.exitButton.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 }
