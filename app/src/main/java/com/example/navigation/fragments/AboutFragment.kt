@@ -29,8 +29,7 @@ class AboutFragment : BaseFragment("AboutFragment", R.layout.fragment_about) {
         setupUi()
 
         binding.okButton.setOnClickListener {
-            val action = AboutFragmentDirections.actionAboutFragmentToMenuFragment()
-            findNavController().navigate(action)
+            findNavController().popBackStack()
         }
     }
 
