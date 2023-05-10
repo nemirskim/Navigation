@@ -22,7 +22,7 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            fistsCount = it.getInt(FISTSCOUNT)
+            fistsCount = it.getInt(FISTSCOUNT, Options.DEFAULT.fistCount)
         }
     }
 
