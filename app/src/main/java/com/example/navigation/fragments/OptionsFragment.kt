@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.navigation.fragment.findNavController
 import com.example.navigation.R
 import com.example.navigation.databinding.FragmentOptionsBinding
 import com.example.navigation.models.Options
@@ -29,6 +30,12 @@ class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_option
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupSpinner()
+
+        binding.okButton.setOnClickListener {
+            val action =
+                OptionsFragmentDirections.actionOptionsFragmentToMenuFragment(options.fistCount)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

@@ -10,6 +10,11 @@
         android:label="Menu"
         tools:layout="@layout/fragment_menu">
         <action
+            android:id="@+id/action_menuFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+        <action
             android:id="@+id/action_menuFragment_to_optionsFragment"
             app:destination="@id/optionsFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -19,24 +24,32 @@
             app:destination="@id/aboutFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_right" />
-        <action
-            android:id="@+id/action_menuFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+        <argument
+            android:name="fistsCount"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.navigation.fragments.GameFragment"
         android:label="Where is my coin?"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game">
+        <argument
+            android:name="fistsCount"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/optionsFragment"
         android:name="com.example.navigation.fragments.OptionsFragment"
         android:label="Options"
-        tools:layout="@layout/fragment_options" />
+        tools:layout="@layout/fragment_options">
+        <action
+            android:id="@+id/action_optionsFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.navigation.fragments.AboutFragment"
         android:label="About"
-        tools:layout="@layout/fragment_about">
-    </fragment>
+        tools:layout="@layout/fragment_about" />
 </navigation>
