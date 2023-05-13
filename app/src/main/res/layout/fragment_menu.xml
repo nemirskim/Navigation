@@ -27,12 +27,4 @@
         style="@style/appCompatButtonStyle"
         android:text="@string/exit" />
 
-    <TextView
-        android:id="@+id/fistsCountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:textSize="30sp" />
-
 </LinearLayout>

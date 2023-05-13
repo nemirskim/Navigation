@@ -43,7 +43,7 @@ class GameFragment : BaseFragment("GameFragment", R.layout.fragment_game) {
         super.onViewCreated(view, savedInstanceState)
 
         getWinningPosition(savedInstanceState)
-        setupUi()
+        createFists()
     }
 
     override fun onDestroyView() {
@@ -54,11 +54,6 @@ class GameFragment : BaseFragment("GameFragment", R.layout.fragment_game) {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(WINNING_POS, winningFist)
-    }
-
-    private fun setupUi() {
-        binding.fistsCountTextView.text = fistsCount.toString()
-        createFists()
     }
 
     private fun createFists() {

@@ -61,8 +61,5 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
         }
     }
 
-    private fun setupUi() {
-        (activity as AppCompatActivity?)!!.supportActionBar?.show()
-        binding.fistsCountTextView.text = fistsCount.toString()
-    }
+    private fun setupUi() = (activity as AppCompatActivity?)!!.supportActionBar?.show()
 }
