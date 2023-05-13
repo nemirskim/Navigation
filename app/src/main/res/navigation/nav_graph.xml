@@ -36,7 +36,15 @@
         <argument
             android:name="fistsCount"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_gameFragment_to_winFragment"
+            app:destination="@id/winFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/winFragment"
+        android:name="com.example.navigation.fragments.WinFragment"
+        android:label="@string/you_won"
+        tools:layout="@layout/fragment_win" />
     <fragment
         android:id="@+id/optionsFragment"
         android:name="com.example.navigation.fragments.OptionsFragment"

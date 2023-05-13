@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.navigation.R
 import com.example.navigation.databinding.FragmentGameBinding
 import com.example.navigation.databinding.ItemFistBinding
@@ -79,8 +80,8 @@ class GameFragment : BaseFragment("GameFragment", R.layout.fragment_game) {
 
     private fun onFistPressed(view: View) {
         if (view.tag == winningFist) {
-            Toast.makeText(requireContext(), "Win", Toast.LENGTH_SHORT)
-                .show()
+            val action = GameFragmentDirections.actionGameFragmentToWinFragment()
+            findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Defeat", Toast.LENGTH_SHORT)
                 .show()

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.navigation.R
 import com.example.navigation.databinding.FragmentMenuBinding
@@ -15,14 +16,13 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
     private var fistsCount: Int = Options.DEFAULT.fistCount
 
     companion object {
-        private const val FISTSCOUNT = "fistsCount"
+        private const val FISTS_COUNT = "fistsCount"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
-            fistsCount = it.getInt(FISTSCOUNT, Options.DEFAULT.fistCount)
+            fistsCount = it.getInt(FISTS_COUNT, Options.DEFAULT.fistCount)
         }
     }
 
@@ -39,7 +39,7 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fistsCountTextView.text = fistsCount.toString()
+        setupUi()
 
         binding.startGameButton.setOnClickListener {
             val action = MenuFragmentDirections.actionMenuFragmentToGameFragment(fistsCount)
@@ -59,5 +59,10 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
         binding.exitButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
+    }
+
+    private fun setupUi() {
+        (activity as AppCompatActivity?)!!.supportActionBar?.show()
+        binding.fistsCountTextView.text = fistsCount.toString()
     }
 }
