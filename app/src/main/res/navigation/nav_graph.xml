@@ -50,6 +50,9 @@
         android:name="com.example.navigation.fragments.OptionsFragment"
         android:label="Options"
         tools:layout="@layout/fragment_options">
+        <argument
+            android:name="fistsCount"
+            app:argType="integer" />
         <action
             android:id="@+id/action_optionsFragment_to_menuFragment"
             app:destination="@id/menuFragment"

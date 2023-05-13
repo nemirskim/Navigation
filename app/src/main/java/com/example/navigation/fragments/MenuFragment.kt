@@ -47,7 +47,7 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
         }
 
         binding.optionsButton.setOnClickListener {
-            val action = MenuFragmentDirections.actionMenuFragmentToOptionsFragment()
+            val action = MenuFragmentDirections.actionMenuFragmentToOptionsFragment(fistsCount)
             findNavController().navigate(action)
         }
 

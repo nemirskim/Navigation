@@ -10,13 +10,22 @@ import androidx.navigation.fragment.findNavController
 import com.example.navigation.R
 import com.example.navigation.databinding.FragmentOptionsBinding
 import com.example.navigation.models.Options
+import kotlin.properties.Delegates
 
 class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_options) {
     private var _binding: FragmentOptionsBinding? = null
     private val binding get() = _binding!!
     private var options: Options = Options.DEFAULT
     private var spinnerValues = listOf(2, 3, 4, 5, 6)
+    private var fistsCount by Delegates.notNull<Int>()
     private lateinit var adapter: ArrayAdapter<Int>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            fistsCount = it.getInt("fistsCount", Options.DEFAULT.fistCount)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +59,7 @@ class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_option
             spinnerValues
         )
         fistsCountSpinner.adapter = adapter
-        fistsCountSpinner.setSelection(spinnerValues.indexOfFirst { it == options.fistCount })
+        fistsCountSpinner.setSelection(spinnerValues.indexOfFirst { it == fistsCount })
 
         fistsCountSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
