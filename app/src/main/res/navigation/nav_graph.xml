@@ -53,10 +53,6 @@
         <argument
             android:name="fistsCount"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_optionsFragment_to_menuFragment"
-            app:destination="@id/menuFragment"
-            app:popUpTo="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

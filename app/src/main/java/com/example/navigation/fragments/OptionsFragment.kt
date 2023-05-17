@@ -20,6 +20,10 @@ class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_option
     private var fistsCount by Delegates.notNull<Int>()
     private lateinit var adapter: ArrayAdapter<Int>
 
+    companion object {
+        const val FISTS_COUNT = "fistsCount"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,9 +45,8 @@ class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_option
         setupSpinner()
 
         binding.okButton.setOnClickListener {
-            val action =
-                OptionsFragmentDirections.actionOptionsFragmentToMenuFragment(options.fistCount)
-            findNavController().navigate(action)
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(FISTS_COUNT, fistsCount)
+            findNavController().popBackStack()
         }
     }
 
@@ -68,8 +71,8 @@ class OptionsFragment : BaseFragment("OptionsFragment", R.layout.fragment_option
                 position: Int,
                 id: Long
             ) {
-                val count = spinnerValues[position]
-                options = options.copy(fistCount = count)
+                fistsCount = spinnerValues[position]
+                options = options.copy(fistCount = fistsCount)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

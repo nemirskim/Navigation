@@ -15,17 +15,6 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
     private val binding get() = _binding!!
     private var fistsCount: Int = Options.DEFAULT.fistCount
 
-    companion object {
-        private const val FISTS_COUNT = "fistsCount"
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            fistsCount = it.getInt(FISTS_COUNT, Options.DEFAULT.fistCount)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,5 +50,17 @@ class MenuFragment : BaseFragment("MenuFragment", R.layout.fragment_menu) {
         }
     }
 
-    private fun setupUi() = (activity as AppCompatActivity?)!!.supportActionBar?.show()
+    private fun setupUi() {
+        (activity as AppCompatActivity?)!!.supportActionBar?.show()
+
+        val liveData =
+            findNavController().currentBackStackEntry?.savedStateHandle
+                ?.getLiveData<Int>(OptionsFragment.FISTS_COUNT)
+        liveData?.observe(viewLifecycleOwner) {
+            if (it != null) {
+                fistsCount = it
+                liveData.value = null
+            }
+        }
+    }
 }
